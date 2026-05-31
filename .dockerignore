@@ -1,0 +1,10 @@
+.git
+.github
+node_modules
+apps/*/node_modules
+dist
+apps/*/dist
+.DS_Store
+*.log
+Dockerfile
+README.md
