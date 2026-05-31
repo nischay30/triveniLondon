@@ -1,0 +1,17 @@
+{
+  "name": "trivenilondon",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Static MVP ecommerce storefront for triveniLondon.",
+  "packageManager": "pnpm@9.15.4",
+  "scripts": {
+    "dev": "pnpm --filter @trivenilondon/web dev",
+    "build": "pnpm --filter @trivenilondon/web build",
+    "lint": "pnpm --filter @trivenilondon/web lint",
+    "preview": "pnpm --filter @trivenilondon/web preview",
+    "typecheck": "pnpm --filter @trivenilondon/web typecheck"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

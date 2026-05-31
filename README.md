@@ -1,1 +1,78 @@
 # triveniLondon
+
+Static MVP for `triveniLondon`, an ecommerce storefront for fragrances and jewellery.
+
+The first delivery target is a static React application packaged as a Docker image. The image can be deployed to any container platform, while Cloudflare manages DNS for `trivenilondon.co.uk`.
+
+## Stack
+
+- React
+- TypeScript
+- Vite
+- pnpm workspaces
+- Docker
+- Nginx static runtime image
+- GitHub Actions CI
+
+## Repository Workflow
+
+- Do not push directly to `main`.
+- Create a branch for each task.
+- Push the branch to GitHub.
+- Open a pull request for review before merge.
+
+## Project Structure
+
+```text
+apps/web        Static React storefront
+Dockerfile      Production static container image
+nginx.conf      Nginx runtime configuration
+```
+
+## Local Development
+
+Enable pnpm through Corepack, then install dependencies:
+
+```sh
+corepack enable
+pnpm install
+pnpm dev
+```
+
+The web app runs from `apps/web`.
+
+## Quality Checks
+
+```sh
+pnpm lint
+pnpm typecheck
+pnpm build
+```
+
+## Docker
+
+Build the static production image:
+
+```sh
+docker build -t trivenilondon:local .
+```
+
+Run it locally:
+
+```sh
+docker run --rm -p 8080:80 trivenilondon:local
+```
+
+Then open `http://localhost:8080`.
+
+## CI
+
+GitHub Actions runs on pull requests and pushes to `main`:
+
+- install dependencies
+- lint
+- typecheck
+- build
+- Docker image build
+
+Deployment will be added after the first container build is reviewed and merged.
