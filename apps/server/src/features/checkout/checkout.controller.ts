@@ -15,7 +15,7 @@ router.post("/", (request, response) => {
   }
 
   try {
-    const order = createCheckoutOrder(items, address as any, userId);
+    const order = createCheckoutOrder(items, address as Record<string, string>, userId);
     return response.status(200).json({ order });
   } catch (error) {
     return response.status(400).json({ error: error instanceof Error ? error.message : "Checkout failed." });
