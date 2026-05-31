@@ -43,8 +43,10 @@ The web app runs from `apps/web`. To run the Express server locally after buildi
 
 ```sh
 pnpm build
-pnpm start
+pnpm app
 ```
+
+If you prefer npm scripts, `npm run app` also works after dependencies are installed and Corepack has enabled pnpm.
 
 ## Quality Checks
 
