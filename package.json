@@ -2,7 +2,7 @@
   "name": "trivenilondon",
   "private": true,
   "version": "0.1.0",
-  "description": "Static MVP ecommerce storefront for triveniLondon served by Express.",
+  "description": "Static MVP ecommerce storefront for TriveniLondon served by Express.",
   "packageManager": "pnpm@9.15.4",
   "scripts": {
     "app": "pnpm start",

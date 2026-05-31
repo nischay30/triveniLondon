@@ -1,6 +1,6 @@
-# triveniLondon
+# TriveniLondon
 
-Static MVP for `triveniLondon`, an ecommerce storefront for fragrances and jewellery served by an Express server.
+Static MVP for `TriveniLondon`, an ecommerce storefront for fragrances and jewellery served by an Express server.
 
 The first delivery target is a React application built into static assets, served by Express, and packaged as a Docker image. The image can be deployed to any container platform, while Cloudflare manages DNS for `trivenilondon.co.uk`.
 
@@ -72,29 +72,44 @@ docker run --rm -p 8080:8080 trivenilondon:local
 
 Then open `http://localhost:8080`.
 
-## Temporary GitHub Pages Preview
+## GitHub Pages Preview
 
-The project can also publish the static storefront to GitHub Pages before the production domain is ready.
+The project can publish the static storefront to GitHub Pages while the container deployment is being prepared.
 
-GitHub Pages uses a separate build command because project pages are served from `/triveniLondon/`:
+The default Pages build targets the custom domain `trivenilondon.co.uk` and uses the normal `/` base path:
 
 ```sh
 pnpm build:pages
 ```
 
-The Docker and Express build keeps the normal `/` base path:
+For a temporary repository URL preview at `https://nischay30.github.io/triveniLondon/`, use:
+
+```sh
+pnpm --filter @trivenilondon/web build:pages:repo
+```
+
+The Docker and Express build also keeps the normal `/` base path:
 
 ```sh
 pnpm build
 ```
 
-After the GitHub Pages workflow is merged to `main`, enable Pages in GitHub repository settings and select GitHub Actions as the source. The temporary preview URL should be:
+After the GitHub Pages workflow is merged to `main`, enable Pages in GitHub repository settings and select GitHub Actions as the source. The custom domain should be:
 
 ```text
-https://nischay30.github.io/triveniLondon/
+https://trivenilondon.co.uk/
 ```
 
-When `trivenilondon.co.uk` is live, remove `.github/workflows/pages.yml`, remove the `build:pages` scripts, and simplify `apps/web/vite.config.ts` back to a single `/` base.
+If the workflow fails with `Get Pages site failed`, Pages has not been enabled for the repository yet. Fix it in GitHub:
+
+1. Open repository settings.
+2. Go to Pages.
+3. Set Build and deployment source to GitHub Actions.
+4. Re-run the GitHub Pages workflow.
+
+The `actions/configure-pages` action has an `enablement` option, but GitHub requires a token other than the default `GITHUB_TOKEN` for first-time enablement. We are keeping the workflow secret-free for now and doing the one-time enablement through repository settings.
+
+When the container deployment is live, remove `.github/workflows/pages.yml`, remove `apps/web/public/CNAME`, and remove the `build:pages` scripts.
 
 ## CI
 
