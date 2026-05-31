@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - main
+      - '**'
+  pull_request:
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
@@ -40,8 +44,22 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile=false
 
+      - name: Determine Pages base path
+        run: |
+          BRANCH_NAME="${GITHUB_REF_NAME:-$(echo ${GITHUB_REF#refs/heads/})}"
+          if [[ "${BRANCH_NAME}" == "main" ]]; then
+            echo "PAGE_BASE_PATH=/" >> $GITHUB_ENV
+          else
+            SAFE_NAME=$(echo "${BRANCH_NAME}" | tr '[:upper:]' '[:lower:]' | sed 's@[^a-z0-9._-]@-@g')
+            echo "PAGE_BASE_PATH=/${SAFE_NAME}/" >> $GITHUB_ENV
+          fi
+          echo "Branch preview path: ${PAGE_BASE_PATH}"
+
       - name: Build GitHub Pages site
-        run: pnpm build:pages
+        run: |
+          cd apps/web
+          VITE_BASE_PATH="${PAGE_BASE_PATH}" pnpm build:pages
+          cd ../..
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v6
