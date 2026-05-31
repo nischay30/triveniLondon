@@ -72,6 +72,30 @@ docker run --rm -p 8080:8080 trivenilondon:local
 
 Then open `http://localhost:8080`.
 
+## Temporary GitHub Pages Preview
+
+The project can also publish the static storefront to GitHub Pages before the production domain is ready.
+
+GitHub Pages uses a separate build command because project pages are served from `/triveniLondon/`:
+
+```sh
+pnpm build:pages
+```
+
+The Docker and Express build keeps the normal `/` base path:
+
+```sh
+pnpm build
+```
+
+After the GitHub Pages workflow is merged to `main`, enable Pages in GitHub repository settings and select GitHub Actions as the source. The temporary preview URL should be:
+
+```text
+https://nischay30.github.io/triveniLondon/
+```
+
+When `trivenilondon.co.uk` is live, remove `.github/workflows/pages.yml`, remove the `build:pages` scripts, and simplify `apps/web/vite.config.ts` back to a single `/` base.
+
 ## CI
 
 GitHub Actions runs on pull requests and pushes to `main`:
