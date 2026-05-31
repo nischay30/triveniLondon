@@ -211,6 +211,25 @@ h3 {
   color: #64706b;
 }
 
+.product-footer {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.product-footer button,
+.cart-actions button,
+.summary-card button,
+.user-badge button {
+  background: #1f2523;
+  border: none;
+  color: #fffaf4;
+  cursor: pointer;
+  font-weight: 700;
+  padding: 10px 16px;
+}
+
 .product-card strong {
   align-self: end;
   font-size: 1.1rem;
@@ -221,6 +240,124 @@ h3 {
   background:
     linear-gradient(145deg, rgba(255, 255, 255, 0.65), rgba(123, 79, 47, 0.18)),
     #e8ddd1;
+}
+
+.auth-panel {
+  align-items: center;
+  display: flex;
+  gap: 16px;
+}
+
+.google-signin {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.help-text {
+  color: #7b4f2f;
+  font-size: 0.82rem;
+}
+
+.user-badge {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+}
+
+.user-badge img {
+  border-radius: 999px;
+  height: 34px;
+  width: 34px;
+}
+
+.cart-section,
+.checkout-section {
+  padding-top: 32px;
+}
+
+.cart-table,
+.checkout-grid {
+  display: grid;
+  gap: 18px;
+}
+
+.cart-row {
+  align-items: center;
+  background: #fffaf4;
+  border: 1px solid #ded5ca;
+  display: grid;
+  gap: 18px;
+  grid-template-columns: minmax(0, 1.2fr) minmax(240px, 0.8fr);
+  padding: 18px;
+}
+
+.cart-actions {
+  align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cart-actions input {
+  width: 80px;
+}
+
+.checkout-grid {
+  grid-template-columns: 2fr 1fr;
+}
+
+.checkout-form,
+.summary-card {
+  background: #fffaf4;
+  border: 1px solid #ded5ca;
+  display: grid;
+  gap: 16px;
+  padding: 24px;
+}
+
+.checkout-form label {
+  display: grid;
+  gap: 8px;
+}
+
+.checkout-form input {
+  border: 1px solid #c5b7a4;
+  font: inherit;
+  padding: 12px 14px;
+}
+
+.summary-card h3 {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.summary-line {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.summary-line.total {
+  border-top: 1px solid #ded5ca;
+  font-weight: 700;
+  padding-top: 12px;
+}
+
+.success-box,
+.error-box {
+  border: 1px solid rgba(31, 37, 35, 0.16);
+  padding: 14px 16px;
+}
+
+.success-box {
+  background: rgba(81, 156, 82, 0.1);
+}
+
+.error-box {
+  background: rgba(255, 207, 207, 0.16);
+  color: #7b1313;
 }
 
 .promise-band {
