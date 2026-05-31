@@ -1,17 +1,17 @@
 # triveniLondon
 
-Static MVP for `triveniLondon`, an ecommerce storefront for fragrances and jewellery.
+Static MVP for `triveniLondon`, an ecommerce storefront for fragrances and jewellery served by an Express server.
 
-The first delivery target is a static React application packaged as a Docker image. The image can be deployed to any container platform, while Cloudflare manages DNS for `trivenilondon.co.uk`.
+The first delivery target is a React application built into static assets, served by Express, and packaged as a Docker image. The image can be deployed to any container platform, while Cloudflare manages DNS for `trivenilondon.co.uk`.
 
 ## Stack
 
 - React
 - TypeScript
 - Vite
+- Express
 - pnpm workspaces
 - Docker
-- Nginx static runtime image
 - GitHub Actions CI
 
 ## Repository Workflow
@@ -25,8 +25,8 @@ The first delivery target is a static React application packaged as a Docker ima
 
 ```text
 apps/web        Static React storefront
-Dockerfile      Production static container image
-nginx.conf      Nginx runtime configuration
+apps/server     Express server that serves the built storefront
+Dockerfile      Production container image
 ```
 
 ## Local Development
@@ -39,7 +39,12 @@ pnpm install
 pnpm dev
 ```
 
-The web app runs from `apps/web`.
+The web app runs from `apps/web`. To run the Express server locally after building:
+
+```sh
+pnpm build
+pnpm start
+```
 
 ## Quality Checks
 
@@ -60,7 +65,7 @@ docker build -t trivenilondon:local .
 Run it locally:
 
 ```sh
-docker run --rm -p 8080:80 trivenilondon:local
+docker run --rm -p 8080:8080 trivenilondon:local
 ```
 
 Then open `http://localhost:8080`.

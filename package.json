@@ -2,14 +2,16 @@
   "name": "trivenilondon",
   "private": true,
   "version": "0.1.0",
-  "description": "Static MVP ecommerce storefront for triveniLondon.",
+  "description": "Static MVP ecommerce storefront for triveniLondon served by Express.",
   "packageManager": "pnpm@9.15.4",
   "scripts": {
+    "build": "pnpm --filter @trivenilondon/web build && pnpm --filter @trivenilondon/server build",
     "dev": "pnpm --filter @trivenilondon/web dev",
-    "build": "pnpm --filter @trivenilondon/web build",
-    "lint": "pnpm --filter @trivenilondon/web lint",
+    "dev:server": "pnpm --filter @trivenilondon/server dev",
+    "lint": "pnpm -r lint",
     "preview": "pnpm --filter @trivenilondon/web preview",
-    "typecheck": "pnpm --filter @trivenilondon/web typecheck"
+    "start": "pnpm --filter @trivenilondon/server start",
+    "typecheck": "pnpm -r typecheck"
   },
   "engines": {
     "node": ">=22"
