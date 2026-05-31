@@ -94,6 +94,15 @@ After the GitHub Pages workflow is merged to `main`, enable Pages in GitHub repo
 https://nischay30.github.io/triveniLondon/
 ```
 
+If the workflow fails with `Get Pages site failed`, Pages has not been enabled for the repository yet. Fix it in GitHub:
+
+1. Open repository settings.
+2. Go to Pages.
+3. Set Build and deployment source to GitHub Actions.
+4. Re-run the GitHub Pages workflow.
+
+The `actions/configure-pages` action has an `enablement` option, but GitHub requires a token other than the default `GITHUB_TOKEN` for first-time enablement. We are keeping the workflow secret-free for now and doing the one-time enablement through repository settings.
+
 When `trivenilondon.co.uk` is live, remove `.github/workflows/pages.yml`, remove the `build:pages` scripts, and simplify `apps/web/vite.config.ts` back to a single `/` base.
 
 ## CI
