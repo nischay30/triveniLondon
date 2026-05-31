@@ -25,8 +25,8 @@ function App() {
   return (
     <main>
       <header className="site-header">
-        <a className="brand" href="/" aria-label="triveniLondon home">
-          triveniLondon
+        <a className="brand" href="/" aria-label="TriveniLondon home">
+          TriveniLondon
         </a>
         <nav aria-label="Primary navigation">
           {collections.map((collection) => (
@@ -42,7 +42,7 @@ function App() {
           <p className="eyebrow">Fragrance and jewellery</p>
           <h1 id="hero-title">Objects for memory, ritual, and light.</h1>
           <p>
-            A first look at triveniLondon: layered scents, luminous metals, and
+            A first look at TriveniLondon: layered scents, luminous metals, and
             considered gifts for everyday ceremony.
           </p>
           <a className="primary-link" href="#featured">
@@ -84,7 +84,7 @@ function App() {
       </section>
 
       <footer>
-        <p>triveniLondon</p>
+        <p>TriveniLondon</p>
         <p>Static MVP container build.</p>
       </footer>
     </main>

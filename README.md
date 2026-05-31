@@ -1,6 +1,6 @@
-# triveniLondon
+# TriveniLondon
 
-Static MVP for `triveniLondon`, an ecommerce storefront for fragrances and jewellery served by an Express server.
+Static MVP for `TriveniLondon`, an ecommerce storefront for fragrances and jewellery served by an Express server.
 
 The first delivery target is a React application built into static assets, served by Express, and packaged as a Docker image. The image can be deployed to any container platform, while Cloudflare manages DNS for `trivenilondon.co.uk`.
 

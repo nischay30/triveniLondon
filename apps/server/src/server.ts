@@ -28,5 +28,5 @@ app.get("*", (_request, response) => {
 });
 
 app.listen(port, "0.0.0.0", () => {
-  console.log(`triveniLondon server listening on port ${port}`);
+  console.log(`TriveniLondon server listening on port ${port}`);
 });
